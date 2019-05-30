@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace prueba.Models
+namespace prueba
 {
     using System;
     using System.Collections.Generic;

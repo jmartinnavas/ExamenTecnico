@@ -155,39 +155,44 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FincasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\Finca.cs">
+    <Compile Include="Controllers\PropietariosController.cs" />
+    <Compile Include="Controllers\ResidentesController.cs" />
+    <Compile Include="Controllers\TrabajadorsController.cs" />
+    <Compile Include="Controllers\TrabajadorxfincasController.cs" />
+    <Compile Include="Finca.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.Context.cs">
+    <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.cs">
+    <Compile Include="Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.Designer.cs">
+    <Compile Include="Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Propietario.cs">
+    <Compile Include="Propietario.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Residentes.cs">
+    <Compile Include="Residentes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Trabajador.cs">
+    <Compile Include="Trabajador.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Trabajadorxfinca.cs">
+    <Compile Include="Trabajadorxfinca.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -200,12 +205,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model.Context.tt">
+    <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model.tt">
+    <Content Include="Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
@@ -215,11 +220,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Model.edmx">
+    <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
+    <Content Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -249,9 +254,35 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Fincas\Create.cshtml" />
+    <Content Include="Views\Fincas\Delete.cshtml" />
+    <Content Include="Views\Fincas\Details.cshtml" />
+    <Content Include="Views\Fincas\Edit.cshtml" />
+    <Content Include="Views\Fincas\Index.cshtml" />
+    <Content Include="Views\Propietarios\Create.cshtml" />
+    <Content Include="Views\Propietarios\Delete.cshtml" />
+    <Content Include="Views\Propietarios\Details.cshtml" />
+    <Content Include="Views\Propietarios\Edit.cshtml" />
+    <Content Include="Views\Propietarios\Index.cshtml" />
+    <Content Include="Views\Trabajadors\Create.cshtml" />
+    <Content Include="Views\Trabajadors\Delete.cshtml" />
+    <Content Include="Views\Trabajadors\Details.cshtml" />
+    <Content Include="Views\Trabajadors\Edit.cshtml" />
+    <Content Include="Views\Trabajadors\Index.cshtml" />
+    <Content Include="Views\Trabajadorxfincas\Create.cshtml" />
+    <Content Include="Views\Trabajadorxfincas\Delete.cshtml" />
+    <Content Include="Views\Trabajadorxfincas\Details.cshtml" />
+    <Content Include="Views\Trabajadorxfincas\Edit.cshtml" />
+    <Content Include="Views\Trabajadorxfincas\Index.cshtml" />
+    <Content Include="Views\Residentes\Create.cshtml" />
+    <Content Include="Views\Residentes\Delete.cshtml" />
+    <Content Include="Views\Residentes\Details.cshtml" />
+    <Content Include="Views\Residentes\Edit.cshtml" />
+    <Content Include="Views\Residentes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

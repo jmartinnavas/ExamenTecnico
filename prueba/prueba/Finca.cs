@@ -7,20 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace prueba.Models
+namespace prueba
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Propietario
+    public partial class Finca
     {
-        public int cedula { get; set; }
-        public string nombre { get; set; }
-        public string Apellido { get; set; }
-        public string contacto { get; set; }
-        public string departamento { get; set; }
-        public Nullable<int> finca { get; set; }
+        public Finca()
+        {
+            this.Propietario = new HashSet<Propietario>();
+            this.Residentes = new HashSet<Residentes>();
+        }
     
-        public virtual Finca Finca1 { get; set; }
+        public int codigo { get; set; }
+        public string nombre { get; set; }
+        public string vereda { get; set; }
+        public string municipio { get; set; }
+        public string departamento { get; set; }
+    
+        public virtual ICollection<Propietario> Propietario { get; set; }
+        public virtual ICollection<Residentes> Residentes { get; set; }
     }
 }
