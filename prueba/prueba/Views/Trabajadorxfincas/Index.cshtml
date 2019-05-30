@@ -1,27 +1,42 @@
 ﻿@model IEnumerable<prueba.Trabajadorxfinca>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Asignacion de Trabajadores";
 }
 
-<h2>Index</h2>
+<h2>Asignacion de Trabajadores</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Asignar trabajador", "Create")
 </p>
 <table class="table">
     <tr>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.documento)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.documento)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+
+                |
+                @Html.ActionLink("eliminar asignacion", "Delete", new { /* id=item.PrimaryKey */ }) |
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Regresar a Historial de Trabajadores", "Index", "Trabajadors")

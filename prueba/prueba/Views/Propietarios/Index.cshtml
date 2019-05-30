@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<prueba.Propietario>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Resumen Propietarios";
 }
 
-<h2>Index</h2>
+<h2>Informacion general Propietarios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar Nuevo Propietario", "Create")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cedula)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.nombre)
         </th>
@@ -29,29 +32,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contacto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.departamento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Finca1.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cedula }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cedula }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cedula })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finca1.nombre)
+            </td>
+            <td>
+               | @Html.ActionLink("Editar", "Edit", new { id = item.cedula }) |
+                @Html.ActionLink("Detallar", "Details", new { id = item.cedula }) |
+
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Retornar a Fincas", "Index", "Fincas")

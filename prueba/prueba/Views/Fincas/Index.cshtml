@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<prueba.Finca>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Fincas Cafeteras";
 }
 
-<h2>Index</h2>
+<h2>Consolidado de Fincas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar Nueva Finca", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.nombre)
         </th>
@@ -26,26 +29,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vereda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.municipio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.departamento)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.codigo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.codigo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.codigo })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vereda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.municipio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departamento)
+            </td>
+            <td>
+                | @Html.ActionLink("Editar", "Edit", new { id = item.codigo }) |
+                @Html.ActionLink("Detallar", "Details", new { id = item.codigo }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.codigo }) |
+
+            </td>
+        </tr>
+
+
+    }
 
 </table>
+@Html.ActionLink("Ver Propietarios", "Index", "Propietarios") <br />  <br />
+@Html.ActionLink("Ver familiares Asociados", "Index", "Residentes") <br />  <br />
+@Html.ActionLink("Ver Trabajadores", "Index", "Trabajadors") 

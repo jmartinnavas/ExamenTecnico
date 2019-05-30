@@ -39,6 +39,16 @@ namespace prueba.Controllers
         // GET: Residentes/Create
         public ActionResult Create()
         {
+            var list = new SelectList(new[]
+                                          {
+                                              new {ID="",Name="--SELECCIONE EL PARENTESCO"},
+                                              new {ID="ESPOSO(A)",Name="ESPOSO(A)"},
+                                              new{ID="HIJO(A)",Name="HIJO(A)"},
+                                               new{ID="HERMANO(A)",Name="HERMANO(A)"},
+                                                new{ID="SOBRINO(A)",Name="SOBRINO(A)"},
+                                          },
+               "ID", "Name", 1);
+            ViewData["list"] = list;
             ViewBag.finca = new SelectList(db.Finca, "codigo", "nombre");
             return View();
         }
@@ -73,6 +83,16 @@ namespace prueba.Controllers
             {
                 return HttpNotFound();
             }
+            var list = new SelectList(new[]
+                                         {
+                                              new {ID="",Name="--SELECCIONE EL PARENTESCO"},
+                                              new {ID="ESPOSO(A)",Name="ESPOSO(A)"},
+                                              new{ID="HIJO(A)",Name="HIJO(A)"},
+                                               new{ID="HERMANO(A)",Name="HERMANO(A)"},
+                                                new{ID="SOBRINO(A)",Name="SOBRINO(A)"},
+                                          },
+              "ID", "Name", 1);
+            ViewData["list"] = list;
             ViewBag.finca = new SelectList(db.Finca, "codigo", "nombre", residentes.finca);
             return View(residentes);
         }

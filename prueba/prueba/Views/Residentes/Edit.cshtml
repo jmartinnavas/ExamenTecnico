@@ -1,10 +1,10 @@
 ﻿@model prueba.Residentes
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Registro Familiar";
 }
 
-<h2>Edit</h2>
+<h2>Editar Registro Familiar</h2>
 
 
 @using (Html.BeginForm())
@@ -44,13 +44,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.parentesco, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.parentesco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.parentesco, ViewData["list"] as SelectList, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.parentesco, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.finca, "finca", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.finca, "finca Perteneciente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("finca", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.finca, "", new { @class = "text-danger" })
@@ -59,14 +59,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a la Lista", "Index")
 </div>
 
 @section Scripts {

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<prueba.Residentes>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Registro de Residentes";
 }
 
-<h2>Index</h2>
+<h2>Registro de Residentes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ingresar nuevo Familiar", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,29 +29,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contacto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.parentesco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Finca1.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.documento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.documento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.documento })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parentesco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finca1.nombre)
+            </td>
+            <td>
+                |   @Html.ActionLink("Editar", "Edit", new { id = item.documento }) |
+                @Html.ActionLink("Detallar", "Details", new { id = item.documento }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.documento })|
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Retornar a Fincas", "Index", "Fincas")
