@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pruebaTecnicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Finca">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="vereda" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="municipio" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="departamento" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contacto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="departamento" Type="varchar" MaxLength="25" />
+          <Property Name="finca" Type="int" />
+        </EntityType>
+        <EntityType Name="Residentes">
+          <Key>
+            <PropertyRef Name="documento" />
+          </Key>
+          <Property Name="documento" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contacto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="parentesco" Type="varchar" MaxLength="25" />
+          <Property Name="finca" Type="int" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="documento" />
+          </Key>
+          <Property Name="documento" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contacto" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trabajadorxfinca">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="documento" />
+          </Key>
+          <Property Name="codigo" Type="int" Nullable="false" />
+          <Property Name="documento" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Propietar__finca__276EDEB3">
+          <End Role="Finca" Type="Self.Finca" Multiplicity="0..1" />
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Finca">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Propietario">
+              <PropertyRef Name="finca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Residente__finca__2A4B4B5E">
+          <End Role="Finca" Type="Self.Finca" Multiplicity="0..1" />
+          <End Role="Residentes" Type="Self.Residentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Finca">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Residentes">
+              <PropertyRef Name="finca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pruebaTecnicaModelStoreContainer">
+          <EntitySet Name="Finca" EntityType="Self.Finca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Propietario" EntityType="Self.Propietario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Residentes" EntityType="Self.Residentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trabajadorxfinca" EntityType="Self.Trabajadorxfinca" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Propietar__finca__276EDEB3" Association="Self.FK__Propietar__finca__276EDEB3">
+            <End Role="Finca" EntitySet="Finca" />
+            <End Role="Propietario" EntitySet="Propietario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Residente__finca__2A4B4B5E" Association="Self.FK__Residente__finca__2A4B4B5E">
+            <End Role="Finca" EntitySet="Finca" />
+            <End Role="Residentes" EntitySet="Residentes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pruebaTecnicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Finca">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vereda" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="municipio" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Propietario" Relationship="Self.FK__Propietar__finca__276EDEB3" FromRole="Finca" ToRole="Propietario" />
+          <NavigationProperty Name="Residentes" Relationship="Self.FK__Residente__finca__2A4B4B5E" FromRole="Finca" ToRole="Residentes" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contacto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="finca" Type="Int32" />
+          <NavigationProperty Name="Finca1" Relationship="Self.FK__Propietar__finca__276EDEB3" FromRole="Propietario" ToRole="Finca" />
+        </EntityType>
+        <EntityType Name="Residentes">
+          <Key>
+            <PropertyRef Name="documento" />
+          </Key>
+          <Property Name="documento" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contacto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parentesco" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="finca" Type="Int32" />
+          <NavigationProperty Name="Finca1" Relationship="Self.FK__Residente__finca__2A4B4B5E" FromRole="Residentes" ToRole="Finca" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="documento" />
+          </Key>
+          <Property Name="documento" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contacto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trabajadorxfinca">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="documento" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" />
+          <Property Name="documento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Propietar__finca__276EDEB3">
+          <End Role="Finca" Type="Self.Finca" Multiplicity="0..1" />
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Finca">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Propietario">
+              <PropertyRef Name="finca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Residente__finca__2A4B4B5E">
+          <End Role="Finca" Type="Self.Finca" Multiplicity="0..1" />
+          <End Role="Residentes" Type="Self.Residentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Finca">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Residentes">
+              <PropertyRef Name="finca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pruebaTecnicaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Finca" EntityType="Self.Finca" />
+          <EntitySet Name="Propietario" EntityType="Self.Propietario" />
+          <EntitySet Name="Residentes" EntityType="Self.Residentes" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" />
+          <EntitySet Name="Trabajadorxfinca" EntityType="Self.Trabajadorxfinca" />
+          <AssociationSet Name="FK__Propietar__finca__276EDEB3" Association="Self.FK__Propietar__finca__276EDEB3">
+            <End Role="Finca" EntitySet="Finca" />
+            <End Role="Propietario" EntitySet="Propietario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Residente__finca__2A4B4B5E" Association="Self.FK__Residente__finca__2A4B4B5E">
+            <End Role="Finca" EntitySet="Finca" />
+            <End Role="Residentes" EntitySet="Residentes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pruebaTecnicaModelStoreContainer" CdmEntityContainer="pruebaTecnicaEntities">
+          <EntitySetMapping Name="Finca">
+            <EntityTypeMapping TypeName="pruebaTecnicaModel.Finca">
+              <MappingFragment StoreEntitySet="Finca">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="vereda" ColumnName="vereda" />
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Propietario">
+            <EntityTypeMapping TypeName="pruebaTecnicaModel.Propietario">
+              <MappingFragment StoreEntitySet="Propietario">
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="finca" ColumnName="finca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Residentes">
+            <EntityTypeMapping TypeName="pruebaTecnicaModel.Residentes">
+              <MappingFragment StoreEntitySet="Residentes">
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="parentesco" ColumnName="parentesco" />
+                <ScalarProperty Name="finca" ColumnName="finca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trabajador">
+            <EntityTypeMapping TypeName="pruebaTecnicaModel.Trabajador">
+              <MappingFragment StoreEntitySet="Trabajador">
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trabajadorxfinca">
+            <EntityTypeMapping TypeName="pruebaTecnicaModel.Trabajadorxfinca">
+              <MappingFragment StoreEntitySet="Trabajadorxfinca">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

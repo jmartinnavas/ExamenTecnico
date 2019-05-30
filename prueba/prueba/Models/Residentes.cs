@@ -12,9 +12,15 @@ namespace prueba.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Trabajadorxfinca
+    public partial class Residentes
     {
-        public int codigo { get; set; }
         public int documento { get; set; }
+        public string nombre { get; set; }
+        public string Apellido { get; set; }
+        public string contacto { get; set; }
+        public string parentesco { get; set; }
+        public Nullable<int> finca { get; set; }
+    
+        public virtual Finca Finca1 { get; set; }
     }
 }
